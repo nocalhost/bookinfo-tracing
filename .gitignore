@@ -1,0 +1,8 @@
+**/build
+reviews/*.jar
+reviews/*.war
+**/.class
+**/.idea
+**/.gradle
+**/.DS_Store
+**/node_modules
