@@ -1,8 +1,8 @@
 - name: productpage
   serviceType: deployment
-  # dependLabelSelector: 
-  #   jobs:
-  #     - "dep-job"
+  dependLabelSelector: 
+    jobs:
+      - "dep-job"
   containers:
     - name: productpage
       install: 
@@ -43,12 +43,12 @@
           value: "true"
 - name: ratings
   serviceType: deployment
-  # dependLabelSelector: 
-  #   pods: 
-  #     - "productpage"
-  #     - "app.kubernetes.io/name=productpage"
-  #   jobs:
-  #     - "dep-job"
+  dependLabelSelector: 
+    pods: 
+      - "productpage"
+      - "app.kubernetes.io/name=productpage"
+    jobs:
+      - "dep-job"
   containers:
     - dev:
         gitUrl: https://github.com/nocalhost/bookinfo-tracing.git
@@ -84,9 +84,9 @@
           value: "true"
 - name: reviews
   serviceType: deployment
-  # dependLabelSelector: 
-  #   pods: 
-  #     - "productpage"
+  dependLabelSelector: 
+    pods: 
+      - "productpage"
   containers:
     - dev:
         gitUrl: https://github.com/nocalhost/bookinfo-tracing.git
