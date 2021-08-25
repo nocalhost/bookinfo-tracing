@@ -28,6 +28,10 @@ spec:
       labels:
         app: ratings
     spec:
+      volumes:
+        - name: foo
+          configMap:
+            name: ratings
       containers:
       - name: ratings
         image: codingcorp-docker.pkg.coding.net/nocalhost/bookinfo/ratings
@@ -44,6 +48,10 @@ spec:
             value: password
           - name: SERVICE_VERSION
             value: v2
+        volumeMounts:
+          - name: foo
+            mountPath: "/foo"
+            readOnly: true
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
@@ -53,3 +61,10 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 10
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ratings
+data:
+  foo: "bar"
+
