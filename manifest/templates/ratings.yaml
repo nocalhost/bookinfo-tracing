@@ -34,7 +34,7 @@ spec:
             name: ratings
       containers:
       - name: ratings
-        image: codingcorp-docker.pkg.coding.net/nocalhost/bookinfo/ratings
+        image: nocalhost-docker.pkg.coding.net/nocalhost/bookinfo/ratings
         env:
           - name: DB_TYPE
             value: mysql
